@@ -5,7 +5,6 @@
 var calculator = new Vue({
   el: '#calculator',
   data: {
-    message: 'What is up dawg',
     legal: {
       cheese: null,
       bread: null,
