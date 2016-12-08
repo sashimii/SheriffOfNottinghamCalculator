@@ -1,3 +1,7 @@
+// Babby's first attempt at a Vue.js application
+// Maxed out on technical debt with this calculator.
+// All of this code is trash.
+
 var calculator = new Vue({
   el: '#calculator',
   data: {
