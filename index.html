@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+
+
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+    <nav class="blue darken-2">
+      <div class="nav-wrapper container ">
+        <a href="#" class="brand-logo">Sheriff Calc</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#">Calculator</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h4>Doesn't include Royal Goods for now.</h4>
+      <p>In each of the fields below, enter the number of coins and cards you have of each type</p>
+      <div id="calculator">
+        <p>{{ message }}</p>
+        <div class="row">
+        <form class="col s12">
+
+          <section class="card-panel grey lighten-5 z-depth-1">
+            <h4>Money</h4>
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <input v-model="gold['1g']" id="5g" type="text" class="validate">
+                <label for="1g">1g Coin Total: {{ totalOneGold }}g </label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input v-model="gold['5g']" id="5g" type="text" class="validate">
+                <label for="5g">5g Coin Total: {{ totalFiveGold }}g </label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input v-model="gold['20g']" id="20g" type="text" class="validate">
+                <label for="20g">20g Coin Total: {{ totalTwentyGold }}g</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input v-model="gold['50g']" id="50g" type="text" class="validate">
+                <label for="50g">50g Coin Total: {{ totalFiftyGold }}g</label>
+              </div>
+            </div>
+          </section>
+
+          <section class="card-panel grey lighten-5 z-depth-1">
+            <h4>Legal Goods</h4>
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <input v-model="legal.apple" id="apples" type="text" class="validate">
+                <label for="apples">Apples : {{ appleTotalGold }}g</label>
+                <div class="row">
+                  <div class="col s12">
+                    <input v-model="king.apple" value="20" type="checkbox" class="filled-in" id="apple-king" />
+                    <label for="apple-king">I Have the Most Apples</label>
+                  </div>
+                  <div class=" col s12">
+                    <input v-model="queen.apple" value="10" type="checkbox" class="filled-in" id="apple-queen" />
+                    <label for="apple-queen">I Have the 2nd Most Apples</label>
+                  </div>
+                </div>
+              </div>
+              <div class="input-field col s12 m6">
+                <input v-model="legal.cheese" id="last_name" type="text" class="validate">
+                <label for="cheese">Cheese : {{ cheeseTotalGold }}g</label>
+                <div class="row">
+                  <div class="col s12">
+                    <input v-model="king.cheese" type="checkbox" class="filled-in" id="cheese-king" />
+                    <label for="cheese-king">I Have the Most Cheese</label>
+                  </div>
+                  <div class=" col s12">
+                    <input v-model="queen.cheese" type="checkbox" class="filled-in" id="cheese-queen" />
+                    <label for="cheese-queen">I Have the 2nd Most Cheese</label>
+                  </div>
+                </div>
+              </div>
+              <div class="input-field col s12 m6">
+                <input v-model="legal.bread" id="bread" type="text" class="validate">
+                <label for="bread">Bread : {{ breadTotalGold }}g</label>
+                <div class="row">
+                  <div class="col s12">
+                    <input v-model="king.bread" type="checkbox" class="filled-in" id="bread-king"  />
+                    <label for="bread-king">I Have the Most Bread</label>
+                  </div>
+                  <div class=" col s12">
+                    <input v-model="queen.bread" type="checkbox" class="filled-in" id="bread-queen"  />
+                    <label for="bread-queen">I Have the 2nd Most Bread</label>
+                  </div>
+                </div>
+              </div>
+              <div class="input-field col s12 m6">
+                <input v-model="legal.chicken" id="chicken" type="text" class="validate">
+                <label for="chicken">Chicken : {{ chickenTotalGold }}g</label>
+                <div class="row">
+                  <div class="col s12">
+                    <input v-model="king.chicken" type="checkbox" class="filled-in" id="chicken-king" />
+                    <label for="chicken-king">I Have the Most Chicken </label>
+                  </div>
+                  <div class=" col s12">
+                    <input v-model="queen.chicken" type="checkbox" class="filled-in" id="chicken-queen" />
+                    <label for="chicken-queen">I Have the 2nd Most Chicken</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+          <section class="card-panel grey lighten-5 z-depth-1">
+            <h4>Contraband</h4>
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <input v-model="illegal.pepper" id="pepper" type="text" class="validate">
+                <label for="pepper">Pepper : {{ pepperTotalGold }}g</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input v-model="illegal.mead" id="mead" type="text" class="validate">
+                <label for="mead">Mead : {{ meadTotalGold }}g</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input v-model="illegal.silk" id="silk" type="text" class="validate">
+                <label for="silk">Silk : {{ silkTotalGold }}g</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input v-model="illegal.crossbow" id="crossbow" type="text" class="validate">
+                <label for="crossbow">Crossbow : {{ crossbowTotalGold }}g</label>
+              </div>
+            </div>
+          </section>
+        </form>
+
+        <section class="card-panel grey lighten-4 z-depth-1">
+          <div>
+          <h5>Total Gold: {{ absoluteTotalGold }}g</h5>
+          </div>
+        </section>
+      </div>
+      </div>
+    </div>
+
+
+
+    <!-- Vue App -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+    <script src="js/app.vue.js"></script>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+  </body>
+</html>
